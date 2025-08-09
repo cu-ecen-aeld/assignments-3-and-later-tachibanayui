@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
     UNWRAP(sigaction(SIGINT, &new_action, NULL), "Failed to register SIGINT handler")
     char buf[1024];
     int logfd;
-    UNWRAP(logfd = open("/var/tmp/aesdsocketdata", O_CREAT | O_APPEND | O_RDWR), "Fail to open log file");
+    UNWRAP(logfd = open("/var/tmp/aesdsocketdata", O_CREAT | O_APPEND | O_RDWR, 0644), "Fail to open log file");
     openlog("aesdsocket", 0, LOG_USER);
     while (!(caught_sigint || caught_sigterm))
     {
